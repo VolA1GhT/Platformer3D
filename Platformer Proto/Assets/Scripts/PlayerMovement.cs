@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 //using System.Diagnostics;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -11,12 +12,15 @@ public class PlayerMovement : MonoBehaviour
     [System.Serializable]
     public struct Stats
     {
-       
-        
+        [Tooltip("Can be set Health")]
+        //[Range (0, 5)]
+        public int health;
+
         [Tooltip("How fast the player runs.")]
         public float speed;
 
-        [Tooltip("How high the player jumps.")]
+        [Tooltip("How high the player jumps.")] // Tooltip lai dizaineram butu vienkarsak
+        //[Range(0f, 1000f)] Lai var mērogot 
         public float jumpForce;
 
         [Tooltip("Whether the player is allowed to move or not.")]
@@ -107,5 +111,4 @@ public class PlayerMovement : MonoBehaviour
         soundManager.PlayJumpSound();
         rb.AddForce(Vector3.up * playerStats.jumpForce);
     }
-
 }

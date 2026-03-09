@@ -74,6 +74,13 @@ public class GameManager : MonoBehaviour
         winUI.SetActive(true);
         StartCoroutine("Reset");
     }
+
+    /*public void Lose()
+    {
+        //loseUI.SetActive(true);
+        Debug.Log("Game Over");
+        StartCoroutine("Reset");
+    }*/
     IEnumerator Cinematic()
     {
         playerCamera.SetActive(false);

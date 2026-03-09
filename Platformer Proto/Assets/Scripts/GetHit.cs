@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GetHit : MonoBehaviour
 {
     [Tooltip("Determines when the player is taking damage.")]
     public bool hurt = false;
+    public GameManager gameManager;
 
     private bool slipping = false;
     private PlayerMovement playerMovementScript;
@@ -63,6 +65,14 @@ public class GetHit : MonoBehaviour
         playerMovementScript.playerStats.canMove = false;
         playerMovementScript.soundManager.PlayHitSound();
         StartCoroutine("Recover");
+        playerMovementScript.playerStats.health = playerMovementScript.playerStats.health -1 ;
+        Debug.Log("TakeDamage " +playerMovementScript.playerStats.health);
+
+        if(playerMovementScript.playerStats.health <= 0)
+        {
+            Debug.Log ("Game Over");
+            //gameManager.Lose();
+        }
     }
     private IEnumerator Recover()
     {
