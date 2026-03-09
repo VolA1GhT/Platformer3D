@@ -65,7 +65,7 @@ public class GetHit : MonoBehaviour
         playerMovementScript.playerStats.canMove = false;
         playerMovementScript.soundManager.PlayHitSound();
         StartCoroutine("Recover");
-        playerMovementScript.playerStats.health = playerMovementScript.playerStats.health -1 ;
+        playerMovementScript.playerStats.health--;
         Debug.Log("TakeDamage " +playerMovementScript.playerStats.health);
 
         if(playerMovementScript.playerStats.health <= 0)
